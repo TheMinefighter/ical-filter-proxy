@@ -2,11 +2,11 @@ module IcalFilterProxy
   class Calendar
     attr_accessor :ical_url, :api_key, :timezone, :filter_rules, :clear_existing_alarms, :alarm_triggers, :request_headers
 
-    def initialize(ical_url, api_key, timezone = 'UTC', request_headers={})
+    def initialize(ical_url, api_key, timezone = 'UTC', request_headers = {})
       self.ical_url = ical_url
       self.api_key = api_key
       self.timezone = timezone
-      self.request_headers=request_headers
+      self.request_headers = request_headers
 
       self.filter_rules = []
       self.clear_existing_alarms = false
@@ -59,7 +59,7 @@ module IcalFilterProxy
     end
 
     def raw_original_ical
-      URI.open(ical_url, request_headers&.reduce({}, :merge) || {}).read
+      URI.open(ical_url, request_headers || {}).read
     end
   end
 end
